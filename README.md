@@ -1,4 +1,5 @@
-## Nacos Consul Adapter (for Prometheus)
+# Nacos Consul Adapter (for Prometheus)
+
 当使用Nacos作为注册中心时通过`nacos-consul-adapter`能够使prometheus自动发现Nacos中的服务
 
 ## Restrictions
@@ -6,11 +7,16 @@
 - /v1/agent/self 返回默认的datacenter
 - /v1/catalog/services 返回nacos中的服务列表
 - /v1/catalog/service/{service} 返回服务实例
+- /v1/health/service/{service} 返回服务健康状态
 
 ## Requirements
+
+兼容高版本
+
 - Java 1.8+
-- Spring Boot 2.1.x
-- Spring Cloud Greenwich
+- SpringBoot: 2.2.1.RELEASE
+- SpringCloud: Hoxton.SR8
+- Prometheus: 2.20.1
 
 ## Prometheus
 在prometheus配置文件中使用`consul_sd_configs`配置adapter地址
@@ -24,4 +30,11 @@
 ```
 
 ## 参考项目
+
 [eureka-consule-adapter](https://github.com/twinformatics/eureka-consul-adapter)
+
+[Consul catalog Api](https://www.consul.io/api-docs/catalog)
+
+[Consul health Api](https://www.consul.io/api-docs/health)
+
+[xuande/nacos-consul-adapter](https://github.com/xuande/nacos-consul-adapter)
